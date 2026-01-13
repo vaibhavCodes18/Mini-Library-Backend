@@ -28,4 +28,44 @@ public class Book {
     public void onCreate(){
         this.addedBook = LocalDate.now();
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getBookName() {
+        return bookName;
+    }
+
+    public void setBookName(String bookName) {
+        this.bookName = bookName;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public LocalDate getAddedBook() {
+        return addedBook;
+    }
+
+    public void setAddedBook(LocalDate addedBook) {
+        this.addedBook = addedBook;
+    }
+
+    public List<BorrowRecord> getBorrowRecords() {
+        return borrowRecords;
+    }
+
+    public void setBorrowRecords(List<BorrowRecord> borrowRecords) {
+        this.borrowRecords = borrowRecords;
+    }
 }
