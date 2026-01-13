@@ -24,6 +24,11 @@ public class BorrowRecord {
     public BorrowRecord() {
     }
 
+    @PrePersist
+    public void onCreate(){
+        this.borrowedBook = LocalDate.now();
+    }
+
     public Long getId() {
         return id;
     }
@@ -48,6 +53,6 @@ public class BorrowRecord {
         this.book = book;
     }
 
-    
+
 
 }
