@@ -1,11 +1,13 @@
 package com.example.MiniLibraryBackend.dto;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
 public class MemberRequestDto {
     @NotBlank(message = "Name is required")
     private String name;
     @NotBlank(message = "Email is required")
+    @Email
     private String email;
 
     public MemberRequestDto() {
