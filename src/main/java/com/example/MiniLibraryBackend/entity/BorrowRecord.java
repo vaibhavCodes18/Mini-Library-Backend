@@ -29,6 +29,14 @@ public class BorrowRecord {
         this.borrowedBook = LocalDate.now();
     }
 
+    public LocalDate getBorrowedBook() {
+        return borrowedBook;
+    }
+
+    public void setBorrowedBook(LocalDate borrowedBook) {
+        this.borrowedBook = borrowedBook;
+    }
+
     public Long getId() {
         return id;
     }
