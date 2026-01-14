@@ -5,7 +5,9 @@ import com.example.MiniLibraryBackend.dto.BookResponseDto;
 import com.example.MiniLibraryBackend.entity.Book;
 import com.example.MiniLibraryBackend.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class BookServiceImpl implements BookService{
     @Autowired
     private BookRepository bookRepository;
@@ -21,6 +23,7 @@ public class BookServiceImpl implements BookService{
         bookResponseDto.setBookId(addedBook.getId());
         bookResponseDto.setBookName(addedBook.getBookName());
         bookResponseDto.setAuthor(addedBook.getAuthor());
+        bookResponseDto.setAddedDate(addedBook.getAddedBook());
         return bookResponseDto;
     }
 }

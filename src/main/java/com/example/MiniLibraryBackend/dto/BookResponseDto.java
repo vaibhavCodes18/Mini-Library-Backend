@@ -1,11 +1,22 @@
 package com.example.MiniLibraryBackend.dto;
 
+import java.time.LocalDate;
+
 public class BookResponseDto {
     private Long bookId;
     private String bookName;
     private String author;
+    private LocalDate addedDate;
 
     public BookResponseDto() {
+    }
+
+    public LocalDate getAddedDate() {
+        return addedDate;
+    }
+
+    public void setAddedDate(LocalDate addedDate) {
+        this.addedDate = addedDate;
     }
 
     public Long getBookId() {
