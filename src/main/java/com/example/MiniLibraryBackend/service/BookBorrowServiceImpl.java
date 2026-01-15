@@ -42,7 +42,7 @@ public class BookBorrowServiceImpl implements BookBorrowService{
     @Override
     public BorrowHistoryResponseDto getBorrowHistoryById(Long memberId) {
         Member member = memberRepository.findById(memberId).orElseThrow(()->new RuntimeException("Member not found"));
-
+        borrowRecordRepository.findAllById(member.getId())
         BorrowHistoryResponseDto borrowHistoryResponseDto = new BorrowHistoryResponseDto();
         borrowHistoryResponseDto.setMemberName(member.getName());
         borrowHistoryResponseDto.setMemberEmail(member.getEmail());
