@@ -2,6 +2,7 @@ package com.example.MiniLibraryBackend.service;
 
 import com.example.MiniLibraryBackend.dto.BorrowBookRequestDto;
 import com.example.MiniLibraryBackend.dto.BorrowBookResponseDto;
+import com.example.MiniLibraryBackend.dto.BorrowHistoryResponseDto;
 import com.example.MiniLibraryBackend.entity.Book;
 import com.example.MiniLibraryBackend.entity.BorrowRecord;
 import com.example.MiniLibraryBackend.entity.Member;
@@ -36,6 +37,16 @@ public class BookBorrowServiceImpl implements BookBorrowService{
 
 
         return borrowBookResponseDto;
+    }
+
+    @Override
+    public BorrowHistoryResponseDto getBorrowHistoryById(Long memberId) {
+        Member member = memberRepository.findById(memberId).orElseThrow(()->new RuntimeException("Member not found"));
+
+        BorrowHistoryResponseDto borrowHistoryResponseDto = new BorrowHistoryResponseDto();
+        borrowHistoryResponseDto.setMemberName(member.getName());
+        borrowHistoryResponseDto.setMemberEmail(member.getEmail());
+        return borrowHistoryResponseDto;
     }
 
     private static BorrowBookResponseDto getBorrowBookResponseDto(BorrowRecord savedRecord) {

@@ -6,5 +6,5 @@ import com.example.MiniLibraryBackend.dto.BorrowHistoryResponseDto;
 
 public interface BookBorrowService {
     BorrowBookResponseDto borrowBook(BorrowBookRequestDto borrowBookRequestDto);
-    BorrowHistoryResponseDto getBorrowHistoryById(Long borrowId);
+    BorrowHistoryResponseDto getBorrowHistoryById(Long memberId);
 }
