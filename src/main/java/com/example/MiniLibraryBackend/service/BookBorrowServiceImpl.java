@@ -1,5 +1,6 @@
 package com.example.MiniLibraryBackend.service;
 
+import com.example.MiniLibraryBackend.dto.BookDetail;
 import com.example.MiniLibraryBackend.dto.BorrowBookRequestDto;
 import com.example.MiniLibraryBackend.dto.BorrowBookResponseDto;
 import com.example.MiniLibraryBackend.dto.BorrowHistoryResponseDto;
@@ -13,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
+
 @Service
 public class BookBorrowServiceImpl implements BookBorrowService{
     @Autowired
@@ -42,10 +45,20 @@ public class BookBorrowServiceImpl implements BookBorrowService{
     @Override
     public BorrowHistoryResponseDto getBorrowHistoryById(Long memberId) {
         Member member = memberRepository.findById(memberId).orElseThrow(()->new RuntimeException("Member not found"));
-        borrowRecordRepository.findAllById(member.getId())
+        List<BorrowRecord> borrowRecordList = borrowRecordRepository.findByMemberId(memberId);
+
         BorrowHistoryResponseDto borrowHistoryResponseDto = new BorrowHistoryResponseDto();
         borrowHistoryResponseDto.setMemberName(member.getName());
         borrowHistoryResponseDto.setMemberEmail(member.getEmail());
+        List<BookDetail> books = borrowRecordList.stream().map(bookHistory -> {
+            BookDetail bookDetail = new BookDetail();
+            bookDetail.setBorrowId(bookHistory.getId());
+            bookDetail.setBookId(bookHistory.getBook().getId());
+            bookDetail.setBookName(bookHistory.getBook().getBookName());
+            bookDetail.setAuthorName(bookHistory.getBook().getAuthor());
+            return bookDetail;
+        }).toList();
+        borrowHistoryResponseDto.getBooks().addAll(books);
         return borrowHistoryResponseDto;
     }
 

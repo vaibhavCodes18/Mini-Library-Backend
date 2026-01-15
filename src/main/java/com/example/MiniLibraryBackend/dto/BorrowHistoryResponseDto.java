@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BorrowHistoryResponseDto {
-    private Long borrowId;
+
     private String memberName;
     private String memberEmail;
     private List<BookDetail> books = new ArrayList<>();
@@ -12,13 +12,7 @@ public class BorrowHistoryResponseDto {
     public BorrowHistoryResponseDto() {
     }
 
-    public Long getBorrowId() {
-        return borrowId;
-    }
 
-    public void setBorrowId(Long borrowId) {
-        this.borrowId = borrowId;
-    }
 
     public String getMemberName() {
         return memberName;

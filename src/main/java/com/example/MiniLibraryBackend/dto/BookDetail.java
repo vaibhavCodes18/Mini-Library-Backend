@@ -1,11 +1,20 @@
 package com.example.MiniLibraryBackend.dto;
 
 public class BookDetail {
+    private Long borrowId;
     private Long bookId;
     private String bookName;
     private String authorName;
 
     public BookDetail() {
+    }
+
+    public Long getBorrowId() {
+        return borrowId;
+    }
+
+    public void setBorrowId(Long borrowId) {
+        this.borrowId = borrowId;
     }
 
     public Long getBookId() {
